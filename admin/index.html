@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sacolão Soares - Painel Admin</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1><i class="fas fa-robot"></i> Painel Administrativo</h1>
+      <div id="qrcode-container">
+        <h3>QR Code para Login</h3>
+        <img id="qrcode-img" src="" alt="QR Code">
+        <button id="refresh-qr"><i class="fas fa-sync-alt"></i> Atualizar</button>
+      </div>
+    </header>
+    
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="promocoes"><i class="fas fa-tag"></i> Promoções</button>
+      <button class="tab-btn" data-tab="mensagens"><i class="fas fa-comment-alt"></i> Mensagens</button>
+      <button class="tab-btn" data-tab="config"><i class="fas fa-cog"></i> Configurações</button>
+    </div>
+    
+    <div id="promocoes" class="tab-content active">
+      <h2><i class="fas fa-calendar-alt"></i> Promoções Diárias</h2>
+      <div id="promocoes-container" class="grid-container"></div>
+      <button id="salvar-promocoes" class="btn"><i class="fas fa-save"></i> Salvar</button>
+    </div>
+    
+    <div id="mensagens" class="tab-content">
+      <h2><i class="fas fa-comments"></i> Mensagens Automáticas</h2>
+      <div id="mensagens-container"></div>
+      <button id="salvar-mensagens" class="btn"><i class="fas fa-save"></i> Salvar</button>
+    </div>
+    
+    <div id="config" class="tab-content">
+      <h2><i class="fas fa-sliders-h"></i> Configurações do Bot</h2>
+      <div id="config-container"></div>
+      <button id="salvar-config" class="btn"><i class="fas fa-save"></i> Salvar</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

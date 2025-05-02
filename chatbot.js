@@ -1,23 +1,31 @@
 const qrcode = require("qrcode-terminal");
-const { Client, Buttons, List, MessageMedia } = require("whatsapp-web.js"); // Mudança Buttons
+const { Client, MessageMedia } = require("whatsapp-web.js");
 const fs = require("fs");
 const path = require("path");
-const client = new Client;
-const interessadosPath = "./data/interessados.json";
 const cron = require("node-cron");
+const { websocketManager } = require('./app'); // Importe o gerenciador
 
-
-// Carregar promoções
+const client = new Client();
+const interessadosPath = "./data/interessados.json";
 const PROMOCOES = require("./data/promocoes.json");
 
 // Serviço de leitura do QR code
-client.on("qr", (qr) => {
-  qrcode.generate(qr, { small: true });
+const QRCode = require('qrcode'); // biblioteca para converter em base64
+
+client.on("qr", async (qr) => {
+  console.log("QR Code bruto do whatsapp-web.js:", qr);
+
+  try {
+    const base64Data = await QRCode.toDataURL(qr); // Gera uma imagem em base64
+    websocketManager.updateQR(base64Data); // Agora sim, imagem base64 válida
+  } catch (err) {
+    console.error("Erro ao converter QR em imagem base64:", err);
+  }
 });
 
 // Após isso ele diz que foi tudo certo
 client.on("ready", () => {
-  console.log("Tudo certo! WhatsApp conectado.");
+    console.log("Tudo certo! WhatsApp conectado.");
 });
 
 //Lista de interessados
