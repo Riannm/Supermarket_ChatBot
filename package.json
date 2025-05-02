@@ -7,6 +7,6 @@
     "whatsapp-web.js": "^1.27.0"
   },
   "scripts": {
-    "start": "node src/index.js"
+    "start": "node chatbot.js"
   }
 }
