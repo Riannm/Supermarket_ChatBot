@@ -1,45 +1,21 @@
-const express = require("express");
-const app = express();
-const port = process.env.PORT || 3000;
-
-// Configuração do Puppeteer para Railway
-const puppeteer = require("puppeteer");
-const chromium = require("@sparticuz/chromium-min");
-
-// Configuração do WhatsApp
 const qrcode = require("qrcode-terminal");
-const { Client, MessageMedia } = require("whatsapp-web.js");
+const { Client, Buttons, List, MessageMedia } = require("whatsapp-web.js"); // Mudança Buttons
 const fs = require("fs");
 const path = require("path");
+const client = new Client;
 const interessadosPath = "./data/interessados.json";
 const cron = require("node-cron");
+
+
+// Carregar promoções
 const PROMOCOES = require("./data/promocoes.json");
 
-// Inicializa o Express
-app.get("/", (req, res) => {
-  res.send("ChatBot do Supermercado está rodando!");
-});
-
-app.listen(port, () => {
-  console.log(`Servidor rodando em http://localhost:${port}`);
-});
-
-// Configuração do WhatsApp Client
-const client = new Client({
-  puppeteer: {
-    args: chromium.args,
-    executablePath:
-      process.env.CHROMIUM_PATH || (await chromium.executablePath()),
-    headless: true,
-    ignoreHTTPSErrors: true,
-  },
-});
-
-// Restante do seu código WhatsApp permanece o mesmo...
+// Serviço de leitura do QR code
 client.on("qr", (qr) => {
   qrcode.generate(qr, { small: true });
 });
 
+// Após isso ele diz que foi tudo certo
 client.on("ready", () => {
   console.log("Tudo certo! WhatsApp conectado.");
 });
@@ -91,6 +67,7 @@ cron.schedule("0 8 * * *", async () => {
   }
 });
 
+// Inicializa tudo
 client.initialize();
 
 const delay = (ms) => new Promise((res) => setTimeout(res, ms)); // Função que usamos para criar o delay entre uma ação e outra
@@ -173,10 +150,9 @@ client.on("message", async (msg) => {
 
     await chat.sendStateTyping(); // Simulando Digitação
     await delay(3000);
-    await client.sendMessage(
-      msg.from,
-      'Você foi adicionado à lista de promoções diárias! Todo dia enviaremos novidades para você. Caso queira sair, digite "4️⃣ - Cancelar promoções".'
-    );
+    await client.sendMessage(msg.from, 'Você foi adicionado à lista de promoções diárias! Todo dia enviaremos novidades para você. Caso queira sair, digite "4️⃣ - Cancelar promoções".');
+
+
   }
 
   if (msg.body !== null && msg.body === "3" && msg.from.endsWith("@c.us")) {
@@ -192,12 +168,9 @@ client.on("message", async (msg) => {
 
   if (msg.body !== null && msg.body === "4" && msg.from.endsWith("@c.us")) {
     let interessados = JSON.parse(fs.readFileSync(interessadosPath));
-    interessados = interessados.filter((numero) => numero !== msg.from);
+    interessados = interessados.filter(numero => numero !== msg.from);
     fs.writeFileSync(interessadosPath, JSON.stringify(interessados));
-    await client.sendMessage(
-      msg.from,
-      "Você foi removido da lista de promoções diárias. Se quiser voltar, basta digitar 2 novamente!"
-    );
+    await client.sendMessage(msg.from, 'Você foi removido da lista de promoções diárias. Se quiser voltar, basta digitar 2 novamente!');
   }
 
   if (msg.body !== null && msg.body === "5" && msg.from.endsWith("@c.us")) {
