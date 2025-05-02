@@ -1,0 +1,32 @@
+{
+  "segunda": {
+    "horario": "0 8 * * 1",
+    "mensagem": "🛍️ *PROMOÇÃO DA SEGUNDA!* 🛒\n\n🥛 LEITE INTEGRAL - 30% OFF\nApenas hoje, das 08h às 12h!",
+    "imagem": "promocoes/segunda/oferta-do-dia.jpg"
+  },
+  "terca": {
+    "horario": "0 8 * * 2",
+    "mensagem": "🛍️ *TERÇA DA CARNES!* 🥩\n\nPicanha especial - R$ 39,90/kg\nEstoque limitado!",
+    "imagem": "promocoes/terca/oferta-do-dia.jpg"
+  },
+  "quarta": {
+    "horario": "0 8 * * 3",
+    "mensagem": "🛍️ *QUARTA DA CARNES!* 🥩\n\nPicanha especial - R$ 39,90/kg\nEstoque limitado!",
+    "imagem": "promocoes/quarta/oferta-do-dia.jpg"
+  },
+  "quinta": {
+    "horario": "0 8 * * 4",
+    "mensagem": "🛍️ *QUINTA DA CARNES!* 🥩\n\nPicanha especial - R$ 39,90/kg\nEstoque limitado!",
+    "imagem": "promocoes/quinta/oferta-do-dia.jpg"
+  },
+  "sexta": {
+    "horario": "0 8 * * 5",
+    "mensagem": "🛍️ *SEXTA DA CARNES!* 🥩\n\nPicanha especial - R$ 39,90/kg\nEstoque limitado!",
+    "imagem": "promocoes/sexta/oferta-do-dia.jpg"
+  },
+  "sabado": {
+    "horario": "0 8 * * 6",
+    "mensagem": "🛍️ *SÁBADO DA CARNES!* 🥩\n\nPicanha especial - R$ 39,90/kg\nEstoque limitado!",
+    "imagem": "promocoes/sabado/oferta-do-dia.jpg"
+  }
+}
