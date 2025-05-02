@@ -1,13 +1,13 @@
 const puppeteer = require('puppeteer-core');
-const chromium = require('chrome-aws-lambda'); // ou outro se não for AWS
+const chromium = require('chrome-aws-lambda');
 
 (async () => {
   const browser = await puppeteer.launch({
-    args: chromium.args, // inclui no-sandbox
+    args: chromium.args,
     executablePath: await chromium.executablePath || '/usr/bin/chromium-browser',
     headless: chromium.headless,
   });
-
+  
   const qrcode = require("qrcode-terminal");
   const { Client, Buttons, List, MessageMedia } = require("whatsapp-web.js"); // Mudança Buttons
   const fs = require("fs");
