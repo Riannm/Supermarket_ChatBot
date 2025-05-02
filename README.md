@@ -27,7 +27,7 @@ A Node.js chatbot for supermarkets to send daily promotions and handle customer 
 ```bash
 # Clone the repository
 git clone https://github.com/Riannm/Supermarket_ChatBot.git
-cd teste
+cd Supermarket_ChatBot
 
 # Install dependencies
 npm install
