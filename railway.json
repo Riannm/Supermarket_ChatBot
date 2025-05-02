@@ -1,0 +1,13 @@
+{
+    "builds": [
+      {
+        "src": "package.json",
+        "use": "@railway/app-function-node",
+        "config": {
+          "installCommand": "npm install --include=dev",
+          "buildCommand": "npm run build",
+          "startCommand": "npm start"
+        }
+      }
+    ]
+  }
