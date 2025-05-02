@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sacolão Soares - Painel Admin</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Painel Administrativo</h1>
+    
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="promocoes">Promoções</button>
+      <button class="tab-btn" data-tab="mensagens">Mensagens Padrão</button>
+    </div>
+    
+    <div id="promocoes" class="tab-content active">
+      <h2>Editar Promoções Diárias</h2>
+      <div id="promocoes-container"></div>
+      <button id="salvar-promocoes" class="btn">Salvar Alterações</button>
+    </div>
+    
+    <div id="mensagens" class="tab-content">
+      <h2>Editar Mensagens Padrão</h2>
+      <div id="mensagens-container"></div>
+      <button id="salvar-mensagens" class="btn">Salvar Alterações</button>
+    </div>
+  </div>
+
+  <script src="/js/script.js"></script>
+</body>
+</html>
