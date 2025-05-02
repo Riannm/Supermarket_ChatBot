@@ -1,8 +1,11 @@
 const puppeteer = require('puppeteer-core');
+const chromium = require('chrome-aws-lambda'); // ou outro se não for AWS
 
 (async () => {
   const browser = await puppeteer.launch({
-    args: ['--no-sandbox', '--disable-setuid-sandbox']
+    args: chromium.args, // inclui no-sandbox
+    executablePath: await chromium.executablePath || '/usr/bin/chromium-browser',
+    headless: chromium.headless,
   });
 
   const qrcode = require("qrcode-terminal");
